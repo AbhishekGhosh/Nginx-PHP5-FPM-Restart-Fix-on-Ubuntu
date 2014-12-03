@@ -5,7 +5,7 @@ Fixes Ubuntu-Nginx Service php5-fpm restart issue. This is a known bug which has
 
 This conf needs edit :
 
-`/etc/php5/fpm/php-fpm.conf`
+`/etc/init/php-fpm.conf`
 
 and uncomment this :
 
