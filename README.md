@@ -7,6 +7,8 @@ This conf needs edit :
 
 `/etc/init/php-fpm.conf`
 
+Update [28th Dec, 2014] : I found `/etc/init/php-fpm.conf` has been `/etc/init/php5-fpm.conf` now (HP Cloud, Ubuntu 14.04 LTS, Partner Image) ! In that case, `cd` to `/etc/init/` and do a `ls` to check the file name. Thing has not been corrected, only the filename can be different (php-fpm or php5-fpm).
+
 and uncomment this :
 
 `reload signal USR2`
