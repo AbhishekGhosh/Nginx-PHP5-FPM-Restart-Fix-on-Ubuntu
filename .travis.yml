@@ -1,5 +1,18 @@
 language: php
 php:
-  - 5.5
+  - 5.3
   - 5.4
-  - hhvm
+  - 5.5
+  - 5.6
+
+env:
+  - DB=mysql
+
+before_script:
+  - git clone git://github.com:AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu.git
+
+script: phpunit --configuration ./phpunit-travis.xml.dist
+
+notifications:
+  email: false
+    use_notice: false
