@@ -1,5 +1,6 @@
 Nginx PHP5 FPM Restart Fix on Ubuntu
 ====================================
+[![Build Status](https://travis-ci.org/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu.svg)](https://travis-ci.org/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu)
 
 Fixes Ubuntu-Nginx Service php5-fpm restart issue. This is a known bug which has reappeared. If you run `tail -f /var/log/php5-fpm.log&` - you'll find nothing wrong. Do not stop / kill the process in production server. If it does not start, it will be worser! 
 
