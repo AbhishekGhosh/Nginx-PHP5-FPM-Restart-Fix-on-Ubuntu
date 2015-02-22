@@ -29,4 +29,10 @@ Save and run `service php5-fpm restart`.
 Change the ownership of the file to none or activate UNIX Wheel Group [see my details on wheel group - https://thecustomizewindows.com/2014/03/what-is-wheel-group-in-unix-unix-like-os/ ], 
 otherwise on `dist-upgrade`, it can get replaced.
 
-My website will not load on Windozzz XP + IE ver 1 to 6, ver 8. Use a modern OS and browser. It is HSTS Preload listed.
+### Wiki
+
+We are trying to create a small wiki. You can help us to edit the wiki [here](https://github.com/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu/wiki).
+
+### Others
+
+My website will not load on Windozzz XP + IE ver 1 to 6, ver 8. Use a modern OS and browser. It is HSTS Preload listed. If you use HHVM with PHP5-FPM fallback, it will not hamper.
