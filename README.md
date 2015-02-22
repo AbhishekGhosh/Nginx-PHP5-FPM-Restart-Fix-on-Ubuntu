@@ -8,8 +8,6 @@ This conf needs edit :
 
 `/etc/init/php-fpm.conf`
 
-Update [28th Dec, 2014] : I found `/etc/init/php-fpm.conf` has been `/etc/init/php5-fpm.conf` now (HP Cloud, Ubuntu 14.04 LTS, Partner Image) ! In that case, `cd` to `/etc/init/` and do a `ls` to check the file name. Thing has not been corrected, only the filename can be different (php-fpm or php5-fpm).
-
 and uncomment this :
 
 `reload signal USR2`
@@ -29,10 +27,35 @@ Save and run `service php5-fpm restart`.
 Change the ownership of the file to none or activate UNIX Wheel Group [see my details on wheel group - https://thecustomizewindows.com/2014/03/what-is-wheel-group-in-unix-unix-like-os/ ], 
 otherwise on `dist-upgrade`, it can get replaced.
 
+### Why it Happens?
+
+By default it never happens. Possibly after optimizing the `www.conf` file, somehow it activate this.
+
+### Specific to HP Cloud Partner Images
+
+Update on [28th Dec, 2014] 
+
+I found that, `/etc/init/php-fpm.conf` has been `/etc/init/php5-fpm.conf` now (HP Cloud, Ubuntu 14.04 LTS, Partner Image) ! In that case, `cd` to `/etc/init/` and do a `ls` to check the file name. Thing has not been corrected, only the filename can be different (php-fpm or php5-fpm).
+
 ### Wiki
 
 We are trying to create a small wiki. You can help us to edit the wiki [here](https://github.com/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu/wiki).
 
 ### Others
 
-My website will not load on Windozzz XP + IE ver 1 to 6, ver 8. Use a modern OS and browser. It is HSTS Preload listed. If you use HHVM with PHP5-FPM fallback, it will not hamper.
+1. My website will not load on Windozzz XP + IE ver 1 to 6, ver 8 ! Use a modern OS and browser. It is HSTS Preload listed. There is no matching cipher suite.
+2. If you use HHVM with PHP5-FPM fallback, this file will not hamper your work. I will suggest to use HHVM with PHP5-FPM fallback now for WordPress for Faster loading. HHVM needs some tweaks, search on my website, you'll get some. Facebook fully copy-pasted many files and docs, the expire header need huge works. 
+3. Nginx - PHP5-FPM does not purge due to other reason, Nginx Plus purges. I tested on 22nd Feb, 2015; for community edition, this change has nothing to to do with purging. 
+
+### If you do not want to change the default file
+
+If you want to fully remove (be careful, it will remove all the settings) and reinstall a fresh copy, this is the command :
+
+````
+sudo apt-get purge php5-fpm && sudo apt-get install php5-fpm
+
+````
+
+Initially `service php-fpm restart` will work.
+
+This is fully Copyleft. You can verbatim copy, distribute without any credit. 
