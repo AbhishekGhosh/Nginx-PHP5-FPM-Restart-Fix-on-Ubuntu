@@ -59,3 +59,5 @@ sudo apt-get purge php5-fpm && sudo apt-get install php5-fpm
 Initially `service php-fpm restart` will work.
 
 This is fully Copyleft. You can verbatim copy, distribute without any credit. 
+
+Also see https://github.com/AbhishekGhosh/Nginx-PHP5-FPM-UNIX-Socket-Configuration to fix latest Nginx PHP5-FPM UNIX Socket related issues.
