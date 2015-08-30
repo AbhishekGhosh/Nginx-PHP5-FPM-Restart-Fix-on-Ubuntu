@@ -1,8 +1,6 @@
 Nginx PHP5 FPM Restart Fix on Ubuntu
 ====================================
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
-Fixes Ubuntu-Nginx Service php5-fpm restart issue. This is a known bug which has reappeared. If you run `tail -f /var/log/php5-fpm.log&` - you'll find nothing wrong. Do not stop / kill the process in production server. If it does not start, it will be worser! 
+Getting `stop: Unknown instance:` after runing service php5-fpm restart? Normal. This script fixes Ubuntu-Nginx Service php5-fpm restart issue. This is a known bug which has reappeared. If you run `tail -f /var/log/php5-fpm.log&` - you'll find nothing wrong. Do not stop / kill the process in production server. If it does not start, it will be worser! 
 
 This conf needs edit :
 
@@ -55,13 +53,17 @@ cd /etc/init.d
 cp /etc/init.d/php5-fpm ~/php5-fpm
 echo " " > php5-fpm
 ````
-and paste the content.
+and paste the content. Give a soft reboot from SSH - `reboot`. Now check by running `service php5-fpm restart`, it will work!
 
 ### Why it Happens?
 
-By default it never happens. Possibly after optimizing the `www.conf` file, somehow it activate this.
+By default it never happens. Possibly after optimizing the `www.conf` file or `php.ini` file, somehow evoke this. There can be non-Free software which may not be updated but we use. Difficult for us to trace.
 
+### Can I use dot override file instead?
 
+Yes. See issues - https://github.com/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu/issues/4
+
+I personally think, editing is better. Ubuntu or PHP5-FPM may need a patch when we update, in that case it will get replaced. That is good for security. If you get restart error, as you can see it is not difficicult to fix. We are not kernel security experts. Getting overrriden is safer for us. Not all the users reading & using are experts.
 
 ### Wiki
 
@@ -87,3 +89,5 @@ Initially `service php-fpm restart` will work.
 This is fully Copyleft. You can verbatim copy, distribute without any credit. 
 
 Also see https://github.com/AbhishekGhosh/Nginx-PHP5-FPM-UNIX-Socket-Configuration to fix latest Nginx PHP5-FPM UNIX Socket related issues.
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
