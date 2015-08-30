@@ -8,6 +8,20 @@ This conf needs edit :
 
 `/etc/init/php-fpm.conf`
 
+### Note for newer Ubuntu 14.04 LTS
+
+Updated on [30th Aug, 2015] 
+
+I found that, `/etc/init/php-fpm.conf` has been `/etc/init/php5-fpm.conf` now (HP Cloud, Ubuntu 14.04 LTS, Partner Image, also on Softlayer Ubuntu 14.05 LTS) ! In that case, `cd` to `/etc/init/` and do a `ls` to check the file name. Thing has not been corrected, only the filename can be different (php-fpm or php5-fpm). cd to ``/etc/init/` and find the file named `php-fpm.conf` or `php5-fpm.conf`, cat to see the content and find the lines :
+
+````
+# Precise upstart does not support reload signal, and thus rejects the
+# job. We'd rather start the daemon, instead of forcing users to
+# reboot https://bugs.launchpad.net/ubuntu/+source/php5/+bug/1272788
+#
+# reload signal USR2
+````
+
 and uncomment this :
 
 `reload signal USR2`
@@ -22,20 +36,32 @@ Open Filezilla, take backup of `/etc/init.d/php5-fpm` on your computer, delete `
 
 `nano /etc/init.d/php5-fpm`
 
+You can check it :
+
+````
+cd /etc/init.d && ls
+cat php5-fpm 
+````
+
 Copy this repo's the file named `php5-fpm`'s material full text as raw and wrtite out.
 Save and run `service php5-fpm restart`. 
 Change the ownership of the file to none or activate UNIX Wheel Group [see my details on wheel group - https://thecustomizewindows.com/2014/03/what-is-wheel-group-in-unix-unix-like-os/ ], 
 otherwise on `dist-upgrade`, it can get replaced.
 
+You can empty the `php5-fpm` file by :
+
+````
+cd /etc/init.d
+cp /etc/init.d/php5-fpm ~/php5-fpm
+echo " " > php5-fpm
+````
+and paste the content.
+
 ### Why it Happens?
 
 By default it never happens. Possibly after optimizing the `www.conf` file, somehow it activate this.
 
-### Specific to HP Cloud Partner Images
 
-Update on [28th Dec, 2014] 
-
-I found that, `/etc/init/php-fpm.conf` has been `/etc/init/php5-fpm.conf` now (HP Cloud, Ubuntu 14.04 LTS, Partner Image) ! In that case, `cd` to `/etc/init/` and do a `ls` to check the file name. Thing has not been corrected, only the filename can be different (php-fpm or php5-fpm).
 
 ### Wiki
 
