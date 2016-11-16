@@ -1,3 +1,5 @@
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/AbhishekGhosh/Nginx-PHP5-FPM-Restart-Fix-on-Ubuntu)
+
 Nginx PHP5 FPM Restart Fix on Ubuntu
 ====================================
 Getting `stop: Unknown instance:` after runing service php5-fpm restart? Normal. This script fixes Ubuntu-Nginx Service php5-fpm restart issue. This is a known bug which has reappeared. If you run `tail -f /var/log/php5-fpm.log&` - you'll find nothing wrong. Do not stop / kill the process in production server. If it does not start, it will be worser! 
